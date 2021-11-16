@@ -1,12 +1,16 @@
+import React from 'react';
 import './App.css';
-import { Provider } from 'react-redux';
-import Todo from './Todo';
-import store from './store';
+import AddTodo from './components/AddTodo';
+import TodoList from './components/TodoList';
+// import Filters from './components/Filters';
+
 function App() {
   return (
-    <Provider store={store}>
-      <Todo/>
-    </Provider>
+    <div className="App">
+      <AddTodo />
+      <TodoList />
+      {/* <Filters /> */}
+    </div>
   );
 }
 
