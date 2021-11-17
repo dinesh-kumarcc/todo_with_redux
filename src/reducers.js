@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 
 
 const reducer = (state = [], action) => {
@@ -13,25 +13,19 @@ const reducer = (state = [], action) => {
                 }
             ]
 
-        case 'TODO':
-            let data = JSON.parse(localStorage.getItem('persistantState'))
-            console.log(data, 'dataaaaaaaaaa');
+        case 'TODOO':
+            let data = JSON.parse(localStorage.getItem('appState'))
+            console.log(data.todo, 'dataaaaaaaaaa');
             return data
 
-        // case 'TODO':
-        //     return state.map(todo => 
-        //         (todo.id === action.id) ? 
-        //         {...todo, completed: !todo.completed}: 
-        //         todo
-        //     )  
-
         case 'REMOVE_TODO':
-            let record = JSON.parse(localStorage.getItem('persistantState'))
+            let record = JSON.parse(localStorage.getItem('appState'))
+            console.log(record,'deletete')
             let updatedRecords = record.filter(({ id }) => id !== action.id);
-            let updatedLocal = localStorage.setItem("persistantState", updatedRecords)
+            let updatedLocal = localStorage.setItem("appState", updatedRecords)
             return updatedRecords
 
-        // case 'DELETE_ITEM':
+        // case 'REMOVE_TODO':
         //     return {
         //       ...state,
         //       state: state.items.filter((item, index) => index !== action.payload)
@@ -42,40 +36,37 @@ const reducer = (state = [], action) => {
     }
 }
 
-// export default reducer
+export default reducer
 
 
 
+// const blogreducer = (blogstate = [] ,blogaction) => {
+//     switch (blogaction.type) {
+//         case 'ADD_BLOG':
+//             console.log(blogstate,'blogstate')
+//             return [
+//                 ...blogstate,
+//                 {
+//                     id: blogaction.id,
+//                     text: blogaction.text
+//                 }
+//             ]
 
-const blogreducer = (blogstate = [],blogaction)=>{
-    switch (blogaction.type) {
-        case 'ADD_BLOG':
-            return [
-                ...blogstate,
-                {
-                    id: blogaction.id,
-                    text: blogaction.text
-                }
-            ]
-
-            case 'BLOG':
-                let data = JSON.parse(localStorage.getItem('persistantState'))
-                console.log(data, 'dataaaaaaaaaa');
-                return data
-
-
-        default:
-            return blogstate
-    }
-}
-
-export default combineReducers({
-    reducer,
-    blogreducer
-})
+//             case 'BLOG':
+//                 let data = JSON.parse(localStorage.getItem('persistantState'))
+//                 console.log(data, 'dataaaaaaaaaa');
+//                 return data
 
 
+//         default:
+//             return blogstate
+//     }
+// }
 
+// export default combineReducers({
+//     reducer,
+//     blogreducer
+// })
 
 
 
@@ -103,3 +94,15 @@ export default combineReducers({
 
 //     }
 // }
+
+ // case 'TODO':
+        //     return state.map(todo => 
+        //         (todo.id === action.id) ? 
+        //         {...todo, completed: !todo.completed}: 
+        //         todo
+        //     )  
+   // case 'DELETE_ITEM':
+        //     return {
+        //       ...state,
+        //       state: state.items.filter((item, index) => index !== action.payload)
+        //     }

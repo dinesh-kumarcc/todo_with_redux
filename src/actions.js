@@ -6,8 +6,8 @@ export const addTodo = text => ({
     text
 });
 
-export const toDo = id => ({
-    type: 'TODO',
+export const toDoo = id => ({
+    type: 'TODOO',
     id
 });
 
